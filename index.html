@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yusuf Suleiman Tahir — Researcher Portfolio</title>
+<meta name="description" content="Yusuf Suleiman Tahir, PhD — biometric security, lightweight deep learning and applied AI systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#2B2B2B; --black:#000; --gray:#EAEAEA; --white:#fff;
+  --ink:#111; --ink-2:#4a4a4a; --muted:#8a8a8a; --line:#dcdcdc;
+  --bg:#f3f3f3;
+  --sans:"Inter Tight",system-ui,sans-serif; --serif:"Instrument Serif",Georgia,serif;
+  --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased;letter-spacing:-.005em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.ph{border-bottom:1.5px dashed #999;color:var(--muted)}
+.serif{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+
+/* arrow circle */
+.arrow{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--black);color:#fff;flex-shrink:0;transition:transform .25s}
+.arrow svg{width:16px;height:16px}
+a:hover .arrow,.arrow:hover{transform:rotate(45deg)}
+.arrow.sm{width:32px;height:32px}.arrow.sm svg{width:12px;height:12px}
+.arrow.light{background:#fff;color:#000}
+
+/* nav */
+nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem}
+.logo .mk{width:34px;height:34px;border-radius:9px;background:var(--black);color:#fff;display:grid;place-items:center;font-size:.8rem;font-weight:600;letter-spacing:.02em}
+.navlinks{display:flex;gap:28px;font-size:.86rem;color:var(--ink-2)}
+.navlinks a:hover,.navlinks a.active{color:var(--black)}
+.navlinks a.active{font-weight:500}
+.navcta{font-size:.86rem;font-weight:500;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--black);padding-bottom:1px}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:99px;padding:7px 14px;font:inherit;font-size:.85rem;cursor:pointer}
+
+/* hero */
+.hero{position:relative;padding:40px 0 0}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:end;min-height:620px}
+.rail{position:absolute;left:-4px;top:60px;bottom:40px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;gap:20px}
+.rail span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.72rem;color:var(--muted);letter-spacing:.04em}
+.rail i{flex:1;width:1px;background:var(--line)}
+.hero-left{padding:20px 0 60px 36px;display:flex;flex-direction:column;height:100%}
+.hstats{display:flex;gap:48px}
+.hstats b{display:block;font-size:2.2rem;font-weight:300;letter-spacing:-.03em;line-height:1}
+.hstats b sup{font-size:1rem;vertical-align:14px;margin-right:2px}
+.hstats span{display:block;margin-top:6px;font-size:.72rem;line-height:1.3;color:var(--muted)}
+.hello{font-size:clamp(5rem,13vw,11.5rem);font-weight:300;letter-spacing:-.06em;line-height:.9;margin-top:auto}
+.intro{margin-top:22px;font-size:1rem;color:var(--ink-2);max-width:460px}
+.intro strong{color:var(--ink);font-weight:500}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:.78rem;font-weight:500;background:#fff;border:1px solid var(--line);padding:6px 14px;border-radius:99px;width:max-content}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:#000;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:.84rem;font-weight:500;padding:11px 20px;border-radius:99px;border:1px solid var(--line);background:#fff;transition:.2s}
+.btn:hover{border-color:#000}
+.btn.dark{background:#000;color:#fff;border-color:#000}
+.btn.needs{border-style:dashed;color:var(--muted);cursor:not-allowed}
+.btn.needs::after{content:"link needed";font-size:.62rem;padding:1px 7px;border-radius:99px;background:var(--gray);color:var(--ink-2)}
+.scroll{margin-top:36px;font-size:.78rem;color:var(--ink-2)}
+
+.visual{position:relative;height:100%;min-height:600px;border-radius:var(--r) var(--r) 0 0;overflow:hidden;background:linear-gradient(180deg,#fafafa,#e6e6e6)}
+.visual svg.vein{position:absolute;inset:0;width:100%;height:100%}
+.visual .portrait{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.vcap{position:absolute;left:24px;bottom:24px;right:24px;display:flex;justify-content:space-between;align-items:end;gap:16px}
+.vcap .lbl{background:rgba(255,255,255,.75);backdrop-filter:blur(8px);border-radius:14px;padding:12px 16px;font-size:.78rem;color:var(--ink-2)}
+.vcap .lbl b{display:block;color:#000;font-weight:500;font-size:.86rem}
+
+/* sections */
+section{padding:110px 0}
+.sec-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:48px;flex-wrap:wrap}
+.kicker{font-size:.76rem;color:var(--ink-2);display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.kicker::before{content:"✱";font-size:.8rem}
+h2{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:400;letter-spacing:-.04em;line-height:1}
+h2 .serif{font-size:1.08em}
+.sec-desc{max-width:420px;color:var(--ink-2);font-size:.95rem}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.1fr .8fr 1fr;gap:20px;align-items:stretch}
+.about-text p{color:var(--ink-2);margin-top:18px;font-size:.98rem}
+.card{background:#fff;border-radius:var(--r);padding:28px;border:1px solid #e8e8e8}
+.card.dark{background:var(--primary);color:#fff;border:none}
+.card.black{background:#000;color:#fff;border:none}
+.bigstat{font-size:3.4rem;font-weight:300;letter-spacing:-.05em;line-height:1}
+.card small{display:block;font-size:.8rem;color:var(--muted);margin-top:10px;line-height:1.45}
+.card.dark small,.card.black small{color:#a8a8a8}
+.icon-c{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;margin-bottom:34px}
+.card.dark .icon-c,.card.black .icon-c{border-color:#555}
+.stack-col{display:grid;gap:20px}
+.points{display:grid;gap:22px;align-content:start;padding-top:8px}
+.point{display:flex;gap:16px;font-size:.93rem;color:var(--ink-2)}
+.point .arrow{width:30px;height:30px}.point .arrow svg{width:11px;height:11px}
+
+/* interests */
+.int-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.int-row .card{display:flex;flex-direction:column;min-height:260px}
+.int-row .n{font-size:.76rem;color:var(--muted)}
+.int-row h3{font-size:1.35rem;font-weight:400;letter-spacing:-.02em;margin:auto 0 10px;line-height:1.15}
+.int-row p{font-size:.86rem;color:var(--ink-2)}
+.card.dark .n,.card.dark p{color:#bdbdbd}
+
+/* journey rows */
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:150px 1.5fr 1fr 44px;gap:28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);transition:.25s}
+.row:hover{padding-left:12px;padding-right:12px;background:#fff;border-radius:16px}
+.row .date{font-size:.8rem;color:var(--muted)}
+.row h3{font-size:1.15rem;font-weight:500;letter-spacing:-.015em}
+.row .org{font-size:.86rem;color:var(--ink-2);margin-top:2px}
+.row p.d{font-size:.84rem;color:var(--ink-2);margin-top:8px;max-width:560px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.tag{font-size:.72rem;padding:5px 12px;border-radius:99px;background:var(--gray);color:var(--ink-2);white-space:nowrap}
+.tag.on{background:#000;color:#fff}
+.subhead{font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:56px 0 14px}
+.subhead:first-child{margin-top:0}
+
+/* publications */
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:inherit;font-size:.8rem;padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--ink-2)}
+.chip.on{background:#000;color:#fff;border-color:#000}
+.pub{display:grid;grid-template-columns:110px 1fr;gap:28px;padding:30px 0;border-bottom:1px solid var(--line)}
+.pub .yr{font-size:2.2rem;font-weight:300;letter-spacing:-.04em;color:#b5b5b5;line-height:1}
+.pub h3{font-size:1.3rem;font-weight:400;letter-spacing:-.02em;line-height:1.3;max-width:820px}
+.pub .au{font-size:.86rem;color:var(--ink-2);margin-top:8px}
+.pub .au b{color:#000;font-weight:600}
+.pub .ven{font-size:.86rem;color:var(--muted);margin-top:2px}
+.pub .tags{justify-content:flex-start;margin-top:14px;align-items:center}
+.lb{font:inherit;font-size:.72rem;padding:5px 12px;border-radius:99px;border:1px solid #000;background:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.lb:hover{background:#000;color:#fff}
+.pub details{margin-top:12px}
+.pub summary{font-size:.8rem;color:var(--muted);cursor:pointer}
+.pub details p{font-size:.88rem;color:var(--ink-2);margin-top:8px;max-width:760px}
+pre.bib{display:none;font-family:ui-monospace,monospace;font-size:.74rem;background:#fff;border-radius:14px;padding:16px;margin-top:12px;white-space:pre-wrap;color:var(--ink-2);border:1px solid var(--line)}
+pre.bib.show{display:block}
+
+/* works */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.work{display:flex;flex-direction:column;background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid #e8e8e8;transition:transform .3s,box-shadow .3s}
+.work:hover{transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(0,0,0,.25)}
+.work .thumb{position:relative;height:190px;background:linear-gradient(145deg,#e9e9e9,#cfcfcf);overflow:hidden}
+.work .thumb.dk{background:linear-gradient(145deg,#3a3a3a,#111)}
+.work .thumb > svg{position:absolute;inset:0;width:100%;height:100%}
+.work .thumb .arrow{position:absolute;right:16px;bottom:16px}
+.work .thumb .kind{position:absolute;left:16px;top:16px;font-size:.7rem;padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.85)}
+.work .thumb.dk .kind{background:rgba(255,255,255,.12);color:#eee}
+.work .body{padding:24px;display:flex;flex-direction:column;flex:1}
+.work h3{font-size:1.25rem;font-weight:400;letter-spacing:-.02em;line-height:1.2}
+.work p{font-size:.86rem;color:var(--ink-2);margin-top:10px}
+.work ul{list-style:none;margin-top:14px;display:grid;gap:7px;font-size:.82rem;color:var(--ink-2)}
+.work ul li{padding-left:16px;position:relative}
+.work ul li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:1px;background:#000}
+.work ul b{color:#000;font-weight:600}
+.work .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:18px}
+.work .stack span{font-size:.68rem;padding:4px 10px;border-radius:99px;background:var(--gray);color:var(--ink-2)}
+.work .lnk{font-size:.82rem;font-weight:500;margin-top:14px;display:inline-flex;align-items:center;gap:6px}
+.work.span2{grid-column:span 2}
+.works-head{display:flex;justify-content:space-between;align-items:center;margin:56px 0 18px}
+.works-head:first-child{margin-top:0}
+
+/* skills + service */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pillset{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pillset span{font-size:.82rem;padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:#fff}
+.card.dark .pillset span{background:transparent;border-color:#555;color:#eee}
+.skillgrp+.skillgrp{margin-top:26px}
+.skillgrp h4{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500}
+.card.dark h4{color:#9a9a9a}
+.list{list-style:none;display:grid;gap:18px;margin-top:6px}
+.list li{display:flex;gap:14px;font-size:.92rem}
+.list li b{font-weight:500}
+.list li span{color:#bdbdbd}
+
+/* contact */
+.contact{background:var(--primary);color:#fff;border-radius:32px;padding:80px 64px;position:relative;overflow:hidden}
+.contact h2{font-size:clamp(2.8rem,7vw,6rem);font-weight:300;letter-spacing:-.05em}
+.contact .lead{color:#bdbdbd;max-width:520px;margin-top:20px}
+.mailpill{display:inline-flex;align-items:center;gap:14px;background:#fff;color:#000;border-radius:99px;padding:8px 26px 8px 8px;margin-top:36px;font-size:1rem;font-weight:500}
+.mailpill .arrow{width:46px;height:46px}
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+.cbox{border:1px solid #474747;border-radius:18px;padding:18px 20px;font-size:.88rem}
+.cbox span{display:block;font-size:.7rem;color:#9a9a9a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.cbox a:hover{text-decoration:underline}
+.cbox .ph{color:#9a9a9a;border-color:#777}
+.refs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.refs div{background:rgba(255,255,255,.05);border-radius:18px;padding:18px 20px;font-size:.84rem;color:#c8c8c8}
+.refs b{display:block;color:#fff;font-weight:500;margin-bottom:4px}
+.contact .bigmark{position:absolute;right:-40px;top:-60px;font-size:22rem;font-weight:200;letter-spacing:-.08em;color:rgba(255,255,255,.04);line-height:1;pointer-events:none}
+
+footer{padding:40px 0 50px;font-size:.8rem;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#000;color:#fff;font-size:.84rem;padding:10px 18px;border-radius:99px;opacity:0;transition:.25s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;min-height:0}
+  .hero-left{padding:10px 0 30px}
+  .rail{display:none}
+  .visual{min-height:420px;border-radius:var(--r)}
+  .about-grid{grid-template-columns:1fr 1fr}.about-text{grid-column:1/-1}
+  .int-row{grid-template-columns:1fr 1fr}
+  .works{grid-template-columns:1fr 1fr}.work.span2{grid-column:span 2}
+  .row{grid-template-columns:110px 1fr 36px}.row .tags{display:none}
+  .split{grid-template-columns:1fr}
+  .cgrid{grid-template-columns:1fr 1fr}.refs{grid-template-columns:1fr}
+  .navlinks{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:var(--bg);padding:18px 32px;gap:16px;border-bottom:1px solid var(--line)}
+  .navlinks.open{display:flex}.menu-btn{display:block}.navcta{display:none}
+}
+@media (max-width:640px){
+  .wrap{padding:0 20px}section{padding:80px 0}
+  .about-grid,.int-row,.works{grid-template-columns:1fr}.work.span2{grid-column:auto}
+  .row{grid-template-columns:1fr 32px}.row .date{grid-column:1/-1}
+  .pub{grid-template-columns:1fr;gap:8px}
+  .contact{padding:56px 26px;border-radius:24px}.cgrid{grid-template-columns:1fr}
+  .hstats{gap:28px}
+}
+@media print{nav,.cta,.filters,.menu-btn,.visual{display:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="ar" viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="mk">YT</span>Yusuf S. Tahir</a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.navlinks').classList.toggle('open')">Menu</button>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#journey">Journey</a>
+      <a href="#publications">Publications</a>
+      <a href="#works">Works</a>
+      <a href="#skills">Skills</a>
+    </div>
+    <a class="navcta" href="#contact">Get in touch <svg width="12" height="12"><use href="#ar"/></svg></a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap" style="position:relative">
+    <div class="rail"><span>PhD Researcher</span><i></i><span>2026</span></div>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hstats">
+          <div><b><sup>+</sup>4</b><span>Peer-reviewed papers</span></div>
+          <div><b><sup>+</sup>26</b><span>Citations · h-index 2</span></div>
+          <div><b><sup>+</sup>5</b><span>Systems built</span></div>
+        </div>
+        <h1 class="hello">Hello</h1>
+        <p class="intro">— I'm <strong>Yusuf Suleiman Tahir, PhD</strong>. I design lightweight deep learning models for <strong>biometric security</strong>, and build the systems that put them to work.</p>
+        <div class="status">Open to postdoctoral positions · from February 2027</div>
+        <div class="cta">
+          <a class="btn dark" href="https://scholar.google.com/citations?user=WA9rmeIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar <svg width="12" height="12"><use href="#ar"/></svg></a>
+          <a class="btn" href="https://www.linkedin.com/in/yusuf-suleiman-tahir-895546a9/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="#" data-ph="cv">CV (PDF)</a>
+          <a class="btn" href="#" data-ph="orcid">ORCID</a>
+          <a class="btn" href="#" data-ph="github">GitHub</a>
+        </div>
+        <a class="scroll" href="#about">Scroll down ↓</a>
+      </div>
+      <div class="visual" id="visual">
+        <!-- To use a headshot: add <img class="portrait" src="photo.jpg" alt="Yusuf Suleiman Tahir"> here -->
+        <svg class="vein" id="vein" viewBox="0 0 600 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+        <div class="vcap">
+          <div class="lbl"><b>Finger vein biometrics</b>Near-infrared vascular patterns, beneath the skin</div>
+          <a class="arrow" href="#works" aria-label="See works"><svg><use href="#ar"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text rv">
+        <div class="kicker">About me</div>
+        <h2>Research that <span class="serif">ships</span>.</h2>
+        <p>I hold a Ph.D. from Universiti Sains Malaysia, where I specialised in <b>finger vein recognition and presentation attack detection</b>. I design compact networks shaped to the geometry of vein images, and I evaluate them rigorously, including a new multi-material spoof database and subject-disjoint testing that shows where supervised anti-spoofing breaks down.</p>
+        <p>I also <b>build what I research</b>. With CyberSecurity Malaysia, I helped develop multimodal face, fingerprint, iris and vein recognition systems and a finger vein anti-spoofing application. I have also taught at university level in Nigeria and Cyprus.</p>
+      </div>
+      <div class="stack-col rv">
+        <div class="card">
+          <div class="icon-c"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="none" stroke="#000" stroke-width="1.4"/><path d="M5 8.2 7 10l4-4.2" fill="none" stroke="#000" stroke-width="1.4"/></svg></div>
+          <div class="bigstat">0.00%</div>
+          <small>ACER on the IDIAP and SCUT-SFVD spoof benchmarks, with a 488K-parameter network</small>
+        </div>
+        <div class="card dark">
+          <div class="bigstat">1.32M</div>
+          <small>parameters in FV-EffResNet, 99.54% Rank-1 on FV-USM (vs. 5.38M baseline)</small>
+        </div>
+      </div>
+      <div class="points rv">
+        <div class="card black" style="padding:24px">
+          <div style="font-size:.74rem;color:#9a9a9a;text-transform:uppercase;letter-spacing:.1em">PhD thesis · 2026</div>
+          <div style="font-size:1.15rem;font-weight:400;letter-spacing:-.015em;margin-top:10px;line-height:1.3">Efficient Convolutional and Denoising Architectures for Finger Vein Recognition and Presentation Attack Detection</div>
+        </div>
+        <div class="point"><span class="arrow"><svg><use href="#ar"/></svg></span><span>Created <b style="color:#000;font-weight:500">FVPAD-USM</b>, a 2,880-image multi-material finger vein spoof database</span></div>
+        <div class="point"><span class="arrow"><svg><use href="#ar"/></svg></span><span>Fully funded under the Ministry of Higher Education Malaysia FRGS grant</span></div>
+        <div class="point"><span class="arrow"><svg><use href="#ar"/></svg></span><span>University teaching in Nigeria and Cyprus, including postgraduate courses</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <div><div class="kicker">Research interests</div><h2>What I <span class="serif">work on</span></h2></div>
+      <p class="sec-desc">Computer vision, biometric security and software engineering: recognition systems that are accurate, small enough to deploy, and hard to fool.</p>
+    </div>
+    <div class="int-row">
+      <div class="card rv"><span class="n">01</span><h3>Presentation attack detection</h3><p>Detecting printed, displayed and synthetic spoofs, and generalising to attack materials unseen in training.</p></div>
+      <div class="card dark rv"><span class="n">02</span><h3>Lightweight deep networks</h3><p>Convolutions shaped to the geometry of the biometric image, cutting model size while keeping accuracy.</p></div>
+      <div class="card rv"><span class="n">03</span><h3>Noise-robust feature learning</h3><p>Frequency-domain attention that suppresses noise and quality variation in near-infrared vein images.</p></div>
+      <div class="card rv"><span class="n">04</span><h3>Applied AI systems</h3><p>Turning ML research into reliable software: identity, automation, compliance and LLM-based tools.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="journey" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <div><div class="kicker">Experience &amp; education</div><h2>Explore my <span class="serif">journey</span></h2></div>
+      <p class="sec-desc">Ten years across engineering, research and teaching, in Nigeria, Cyprus and Malaysia.</p>
+    </div>
+
+    <div class="subhead">Experience</div>
+    <div class="rows">
+      <div class="row rv">
+        <div class="date">Oct 2021 – 2026</div>
+        <div><h3>Doctoral Researcher &amp; Graduate Research Assistant</h3><div class="org">Rosdi Lab, School of Electrical &amp; Electronic Engineering, USM</div><p class="d">Fully funded on a Ministry of Higher Education Malaysia FRGS grant under Assoc. Prof. Dr. Bakhtiar Affendi Rosdi. My work covered finger vein recognition, presentation attack detection and applied biometric system development.</p></div>
+        <div class="tags"><span class="tag on">Research</span><span class="tag">Biometrics</span></div>
+        <span class="arrow sm"><svg><use href="#ar"/></svg></span>
+      </div>
+      <div class="row rv">
+        <div class="date">Apr 2020 – Jun 2024</div>
+        <div><h3>Assistant Lecturer</h3><div class="org">Air Force Institute of Technology, Kaduna, Nigeria</div><p class="d">Taught two postgraduate courses in the 2020/2021 session, then went on study leave for my Ph.D. at Universiti Sains Malaysia from October 2021.</p></div>
+        <div class="tags"><span class="tag on">Teaching</span><span class="tag">Postgraduate</span></div>
+        <span class="arrow sm"><svg><use href="#ar"/></svg></span>
+      </div>
+      <div class="row rv">
+        <div class="date">Oct 2018 – Aug 2019</div>
+        <div><h3>Teaching Assistant</h3><div class="org">Eastern Mediterranean University, Famagusta, Cyprus</div><p class="d">Ran tutorials and lab demonstrations, helped deliver lectures, and mentored students through office hours.</p></div>
+        <div class="tags"><span class="tag on">Teaching</span></div>
+        <span class="arrow sm"><svg><use href="#ar"/></svg></span>
+      </div>
+      <div class="row rv">
+        <div class="date">Mar 2017 – Jan 2018</div>
+        <div><h3>Engineering Internships</h3><div class="org">Nigerian Airspace Management Agency, Kano · Start Innovation Hub, Akwa Ibom</div><p class="d">Installed and maintained air navigation and communication systems. Prototyped embedded and IoT hardware, including circuit design, PCB layout and firmware.</p></div>
+        <div class="tags"><span class="tag">Hardware</span><span class="tag">IoT</span></div>
+        <span class="arrow sm"><svg><use href="#ar"/></svg></span>
+      </div>
+    </div>
+
+    <div class="subhead">Education</div>
+    <div class="rows">
+      <div class="row rv">
+        <div class="date">Oct 2021 – 2026</div>
+        <div><h3>Ph.D., Software Engineering</h3><div class="org">Universiti Sains Malaysia, Penang</div><p class="d">Thesis: <em>Efficient Convolutional and Denoising Architectures for Finger Vein Recognition and Presentation Attack Detection</em>.</p></div>
+        <div class="tags"><span class="tag on">Doctorate</span></div>
+        <span class="arrow sm"><svg><use href="#ar"/></svg></span>
+      </div>
+      <div class="row rv">
+        <div class="date">Feb 2018 – Aug 2019</div>
+        <div><h3>M.Sc., Electrical &amp; Electronic Engineering</h3><div class="org">Eastern Mediterranean University, Famagusta, Cyprus</div><p class="d">Thesis: <em>Multi-Modal Detection of Alzheimer's Disease Using Structural MRI Images</em> (advisor: H. Demirel).</p></div>
+        <div class="tags"><span class="tag on">Distinction</span></div>
+        <span class="arrow sm"><svg><use href="#ar"/></svg></span>
+      </div>
+      <div class="row rv">
+        <div class="date">Jan 2011 – Jan 2016</div>
+        <div><h3>B.Eng. (Honours), Electrical &amp; Electronic Engineering</h3><div class="org">Ahmadu Bello University, Zaria, Nigeria</div></div>
+        <div class="tags"><span class="tag">Honours</span></div>
+        <span class="arrow sm"><svg><use href="#ar"/></svg></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <div><div class="kicker">Publications</div><h2>Selected <span class="serif">papers</span></h2></div>
+      <div class="filters">
+        <button class="chip on" data-f="all">All</button>
+        <button class="chip" data-f="journal">Journal</button>
+        <button class="chip" data-f="conference">Conference</button>
+        <button class="chip" data-f="thesis">Thesis</button>
+      </div>
+    </div>
+    <div id="publist" style="border-top:1px solid var(--line)"></div>
+  </div>
+</section>
+
+<section id="works" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <div><div class="kicker">Portfolio</div><h2>Selected <span class="serif">works</span></h2></div>
+      <p class="sec-desc">Research from my doctorate, biometric systems I helped build with CyberSecurity Malaysia, and software I have built.</p>
+    </div>
+
+    <div class="works-head"><div class="subhead" style="margin:0">Doctoral research</div></div>
+    <div class="works">
+      <article class="work span2 rv">
+        <div class="thumb dk"><svg viewBox="0 0 800 190" preserveAspectRatio="none" data-art="waves"></svg><span class="kind">PhD · core thesis work</span></div>
+        <div class="body">
+          <h3>Finger vein presentation attack detection</h3>
+          <p>Lightweight networks that separate genuine finger vein images from spoofs made of different materials, evaluated with ISO/IEC 30107-3 metrics. A multi-material study shows that supervised methods struggle with spoof materials they were not trained on, which points to anomaly detection, one-class and domain-adaptation formulations as the way forward.</p>
+          <ul>
+            <li><b>0.00% ACER</b> on IDIAP and SCUT-SFVD (five seeds), with <b>488K parameters</b> (vs. 1.1M–3.5M for compared methods)</li>
+            <li>Built <b>FVPAD-USM</b>: 720 genuine and 2,160 spoof images from glossy photo paper, high-quality paper and an AMOLED display (available on request)</li>
+            <li>Showed that unseen-material APCER reaches 57–99%, and traced the difficulty of display spoofs to their self-emitted light mimicking NIR transillumination</li>
+            <li>Turned into a Windows anti-spoofing app connected to a commercial finger vein scanner through its SDK</li>
+            <li>International Journal of Biometrics (in press, 2026)</li>
+          </ul>
+          <div class="stack"><span>PyTorch</span><span>Custom DNN</span><span>Scanner SDK</span><span>Windows app</span></div>
+        </div>
+      </article>
+      <article class="work rv">
+        <div class="thumb"><svg viewBox="0 0 400 190" preserveAspectRatio="none" data-art="grid"></svg><span class="kind">PhD · recognition</span><a class="arrow" href="https://doi.org/10.7717/peerj-cs.1837" target="_blank" rel="noopener" aria-label="Read paper"><svg><use href="#ar"/></svg></a></div>
+        <div class="body">
+          <h3>FV-EffResNet</h3>
+          <p>A compact CNN built around the EffRes block: pointwise and depthwise convolution with asymmetric (n×1)(1×m) kernels matched to elongated vein images.</p>
+          <ul>
+            <li><b>98.5–99.5% Rank-1</b> on FV-USM, MMCBNU_6000, SDUMLA-HMT and NUPT-FPV</li>
+            <li><b>1.32M parameters</b> (baseline: 5.38M)</li>
+            <li>PeerJ Computer Science, 2024</li>
+          </ul>
+          <div class="stack"><span>Efficient CNNs</span><span>Edge-ready</span></div>
+        </div>
+      </article>
+      <article class="work span2 rv">
+        <div class="thumb"><svg viewBox="0 0 800 190" preserveAspectRatio="none" data-art="freq"></svg><span class="kind">PhD · denoising</span></div>
+        <div class="body">
+          <h3>Wavelet attention for noise-robust recognition</h3>
+          <p>A module that combines the discrete wavelet transform with learnable attention, so the network suppresses noise in the frequency domain while staying small.</p>
+          <ul><li>Manuscript in preparation</li></ul>
+          <div class="stack"><span>Wavelets</span><span>Attention</span><span>Denoising</span></div>
+        </div>
+      </article>
+      <article class="work rv">
+        <div class="thumb dk"><svg viewBox="0 0 400 190" preserveAspectRatio="none" data-art="rings"></svg><span class="kind">Conference · 2025</span></div>
+        <div class="body">
+          <h3>Fingerprint anti-spoofing</h3>
+          <p>Wavelet scattering combined with a convolutional neural network for robust fingerprint presentation attack detection.</p>
+          <ul><li>IEEE ICECCE 2025</li></ul>
+          <div class="stack"><span>Wavelet scattering</span><span>CNN</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="works-head"><div class="subhead" style="margin:0">Systems &amp; products</div></div>
+    <div class="works">
+      <article class="work rv">
+        <div class="thumb dk"><svg viewBox="0 0 400 190" preserveAspectRatio="none" data-art="nodes"></svg><span class="kind">Multimodal system · 2024</span></div>
+        <div class="body"><h3>DBA 300</h3><p>A face, fingerprint and iris recognition system built at USM with CyberSecurity Malaysia. As a development team member, I trained the biometric recognition models, developed the REST APIs and the backend, and deployed it on-premise with Docker.</p><div class="stack"><span>PyTorch</span><span>Qdrant</span><span>REST</span><span>Docker</span></div></div>
+      </article>
+      <article class="work rv">
+        <div class="thumb"><svg viewBox="0 0 400 190" preserveAspectRatio="none" data-art="nodes"></svg><span class="kind">Portable system · 2024</span></div>
+        <div class="body"><h3>BioPort</h3><p>A portable face, fingerprint, iris and palm vein device built at USM with CyberSecurity Malaysia. As a development team member, I trained the biometric models, optimised them for low-latency matching, and developed the APIs and backend for a Windows client.</p><div class="stack"><span>PyTorch</span><span>Optimisation</span><span>REST</span><span>Windows</span></div></div>
+      </article>
+      <article class="work rv">
+        <div class="thumb dk"><svg viewBox="0 0 400 190" preserveAspectRatio="none" data-art="waves"></svg><span class="kind">Anti-spoofing software · 2023</span></div>
+        <div class="body"><h3>Finger vein presentation attack detection software</h3><p>A Windows application built at USM with CyberSecurity Malaysia. As a development team member, I developed the detection model and integrated it with a commercial finger vein scanner through its SDK.</p><div class="stack"><span>PyTorch</span><span>Scanner SDK</span><span>Windows</span></div></div>
+      </article>
+      <article class="work rv">
+        <div class="thumb"><svg viewBox="0 0 400 190" preserveAspectRatio="none" data-art="rings"></svg><span class="kind">Full-stack system</span></div>
+        <div class="body"><h3>Fingerprint verification &amp; identification</h3><p>1:1 verification and 1:N identification with a PyTorch matcher and a FastAPI and Node.js backend on MySQL, deployed on-premise.</p><div class="stack"><span>PyTorch</span><span>FastAPI</span><span>Node.js</span><span>MySQL</span></div></div>
+      </article>
+      <article class="work span2 rv">
+        <div class="thumb dk"><svg viewBox="0 0 800 190" preserveAspectRatio="none" data-art="grid"></svg><span class="kind">SaaS product</span><a class="arrow light" href="https://taxjeje.com" target="_blank" rel="noopener" aria-label="taxjeje.com"><svg><use href="#ar"/></svg></a></div>
+        <div class="body"><h3>TaxJeje</h3><p>A tax filing platform for individuals, accountants and SMEs, across web and native mobile.</p><div class="stack"><span>Next.js</span><span>Postgres</span><span>Python</span><span>Swift</span><span>Kotlin</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <div><div class="kicker">Toolkit &amp; recognition</div><h2>Skills &amp; <span class="serif">service</span></h2></div>
+    </div>
+    <div class="split">
+      <div class="card rv">
+        <div class="skillgrp"><h4>Machine learning</h4><div class="pillset"><span>PyTorch</span><span>TensorFlow</span><span>CNN design</span><span>Model optimisation</span><span>Computer vision</span><span>Image processing</span></div></div>
+        <div class="skillgrp"><h4>Software</h4><div class="pillset"><span>Python</span><span>C#</span><span>JavaScript</span><span>MATLAB</span><span>Verilog</span><span>.NET</span><span>FastAPI</span><span>React</span><span>Node.js</span><span>API design</span></div></div>
+        <div class="skillgrp"><h4>Embedded &amp; hardware</h4><div class="pillset"><span>Arduino</span><span>STM32</span><span>Proteus</span><span>KiCad</span><span>Altium</span></div></div>
+        <div class="skillgrp"><h4>Data &amp; DevOps</h4><div class="pillset"><span>AWS</span><span>Docker</span><span>Git</span><span>CI/CD</span><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>Qdrant</span></div></div>
+      </div>
+      <div class="card dark rv">
+        <div class="skillgrp"><h4>Awards &amp; funding</h4>
+          <ul class="list">
+            <li><span class="arrow sm light"><svg><use href="#ar"/></svg></span><div><b>Funded PhD</b><br><span>Graduate research assistantship, Fundamental Research Grant Scheme (FRGS/1/2021/ICT07/USM/02/2), Ministry of Higher Education Malaysia, 2021–2026</span></div></li>
+            <li><span class="arrow sm light"><svg><use href="#ar"/></svg></span><div><b>M.Sc. with Distinction</b><br><span>Eastern Mediterranean University, 2019</span></div></li>
+          </ul>
+        </div>
+        <div class="skillgrp"><h4>Academic service</h4>
+          <ul class="list">
+            <li><span class="arrow sm light"><svg><use href="#ar"/></svg></span><div><b>Peer reviewer</b><br><span>IEEE Access, 2024</span></div></li>
+          </ul>
+        </div>
+        <div class="skillgrp"><h4>Languages</h4><div class="pillset"><span>English · fluent</span><span>Hausa · native</span><span>Arabic · intermediate</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0;padding-bottom:40px">
+  <div class="wrap">
+    <div class="contact rv">
+      <div class="bigmark">YT</div>
+      <div class="kicker" style="color:#bdbdbd">Contact</div>
+      <h2>Let's work <span class="serif">together</span>.</h2>
+      <p class="lead">I'm looking for postdoctoral roles in biometric security, trustworthy computer vision or applied AI, starting February 2027. I'm also open to research collaborations.</p>
+      <a class="mailpill" href="mailto:yutaone1@gmail.com"><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span>yutaone1@gmail.com</a>
+      <div class="cgrid">
+        <div class="cbox"><span>Scholar</span><a href="https://scholar.google.com/citations?user=WA9rmeIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a></div>
+        <div class="cbox"><span>LinkedIn</span><a href="https://www.linkedin.com/in/yusuf-suleiman-tahir-895546a9/" target="_blank" rel="noopener">Yusuf Suleiman Tahir ↗</a></div>
+        <div class="cbox"><span>ORCID · GitHub</span><span class="ph" style="display:inline;text-transform:none;letter-spacing:0;font-size:.88rem">link needed</span></div>
+        <div class="cbox"><span>Location</span>Nigeria · open to relocation</div>
+      </div>
+      <div class="kicker" style="color:#bdbdbd;margin-top:44px">References · contact details on request</div>
+      <div class="refs">
+        <div><b>Assoc. Prof. Dr. Bakhtiar Affendi Rosdi</b>PhD advisor · School of Electrical &amp; Electronic Engineering, Universiti Sains Malaysia</div>
+        <div><b>Assoc. Prof. Dr. Muhammad Bashir Abdulrazaq</b>Department of Computer Engineering, Ahmadu Bello University, Nigeria</div>
+        <div><b>Dr. Mubarak Abdu-Aguye</b>Machine Learning Engineer, Technology Innovation Institute (TII), Abu Dhabi, UAE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Yusuf Suleiman Tahir</span><span>Last updated November 2026</span></div></footer>
+<div class="toast" id="toast">Copied</div>
+
+<script>
+/* ---------- publications ---------- */
+const PUBS = [
+  { year:"2026", type:"journal", status:"In press",
+    title:"A Lightweight CNN for Finger Vein Presentation Attack Detection: Multi-Material Analysis and Limitations of Supervised Learning",
+    authors:"<b>Y. S. Tahir</b>, B. A. Rosdi, A. D. Jarno, N. Z. Zamri, N. I. Roslan",
+    venue:"International Journal of Biometrics", badges:["Journal","First author"] },
+  { year:"2025", type:"conference",
+    title:"Robust Fingerprint Anti-Spoofing: Integrating Wavelet Scattering and Convolutional Neural Network",
+    authors:"<b>Y. S. Tahir</b>, A. D. Jarno, M. M. M. Aruwa, W. A. F. W. M. Yusri, B. A. Rosdi",
+    venue:"2025 IEEE 8th International Conference on Electrical, Control and Computer Engineering (ICECCE)", badges:["IEEE","Conference","First author","Presented"] },
+  { year:"2024", type:"journal",
+    title:"FV-EffResNet: an efficient lightweight convolutional neural network for finger vein recognition",
+    authors:"<b>Y. S. Tahir</b>, B. A. Rosdi", venue:"PeerJ Computer Science, 10:e1837",
+    badges:["Journal","Open access","First author"], doi:"10.7717/peerj-cs.1837",
+    abstract:"A lightweight CNN for finger vein recognition that balances network size, speed and accuracy, reaching 98.5–99.5% Rank-1 accuracy on four public databases with 1.32M parameters. Its EffRes block decomposes convolution into pointwise and depthwise operations using asymmetric (n×1) and (1×m) kernels to better capture finger vein structure.",
+    bib:"@article{tahir2024fveffresnet,\n  title   = {FV-EffResNet: an efficient lightweight convolutional neural network for finger vein recognition},\n  author  = {Tahir, Yusuf Suleiman and Rosdi, Bakhtiar Affendi},\n  journal = {PeerJ Computer Science},\n  volume  = {10},\n  pages   = {e1837},\n  year    = {2024},\n  doi     = {10.7717/peerj-cs.1837}\n}" },
+  { year:"2019", type:"conference",
+    title:"Polynomial Reduction of TSP to Freely Open-Loop TSP",
+    authors:"M. B. Abdulrazaq, <b>Y. S. Tahir</b>, S. Sha'aban, M. S. Jibia",
+    venue:"2019 2nd International Conference of the IEEE Nigeria Computer Chapter (NigeriaComputConf), pp. 1–4", badges:["IEEE","Conference","Presented"], doi:"10.1109/NigeriaComputConf45974.2019.8949664" },
+  { year:"2019", type:"thesis",
+    title:"Multi-Modal Detection of Alzheimer's Disease Using Structural MRI Images",
+    authors:"<b>Y. S. Tahir</b>, H. Demirel", venue:"M.Sc. Thesis, Eastern Mediterranean University", badges:["Thesis"] }
+];
+const list=document.getElementById('publist');
+function render(f){
+  list.innerHTML=PUBS.map((p,i)=>({p,i})).filter(({p})=>f==='all'||p.type===f).map(({p,i})=>`
+    <div class="pub">
+      <div class="yr">${p.year}</div>
+      <div>
+        <h3>${p.title}</h3>
+        <div class="au">${p.authors}</div>
+        <div class="ven">${p.venue}</div>
+        <div class="tags">
+          ${p.status?`<span class="tag on">${p.status}</span>`:''}
+          ${p.badges.map(b=>`<span class="tag">${b}</span>`).join('')}
+          ${p.doi?`<a class="lb" href="https://doi.org/${p.doi}" target="_blank" rel="noopener">DOI <svg width="10" height="10"><use href="#ar"/></svg></a>`:''}
+          ${p.bib?`<button class="lb" data-bib="${i}">BibTeX</button>`:''}
+        </div>
+        ${p.abstract?`<details><summary>Abstract</summary><p>${p.abstract}</p></details>`:''}
+        ${p.bib?`<pre class="bib" id="bib-${i}">${p.bib}</pre>`:''}
+      </div>
+    </div>`).join('');
+}
+render('all');
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');render(c.dataset.f)}));
+list.addEventListener('click',async e=>{const b=e.target.closest('[data-bib]');if(!b)return;const pre=document.getElementById('bib-'+b.dataset.bib);pre.classList.toggle('show');if(pre.classList.contains('show')){try{await navigator.clipboard.writeText(pre.textContent);toast('BibTeX copied')}catch(_){}}});
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
+
+/* placeholder buttons */
+document.querySelectorAll('a[data-ph]').forEach(a=>{if(a.getAttribute('href')==='#'){a.classList.add('needs');a.addEventListener('click',e=>e.preventDefault())}});
+
+/* ---------- generative vein visual ---------- */
+(function(){
+  const svg=document.getElementById('vein'); if(!svg) return;
+  let s=7; const rnd=()=>{s=(s*16807)%2147483647;return (s-1)/2147483646};
+  const NS='http://www.w3.org/2000/svg'; const paths=[];
+  function branch(x,y,ang,len,w,depth){
+    let d=`M${x.toFixed(1)} ${y.toFixed(1)}`; const steps=Math.floor(len/14);
+    for(let i=0;i<steps;i++){
+      ang+= (rnd()-.5)*0.30 + (-Math.PI/2-ang)*0.06; const nx=x+Math.cos(ang)*14, ny=y+Math.sin(ang)*14;
+      d+=` Q${(x+nx)/2+(rnd()-.5)*6} ${(y+ny)/2+(rnd()-.5)*6} ${nx.toFixed(1)} ${ny.toFixed(1)}`;
+      x=nx;y=ny;
+      if(depth<2 && rnd()<0.075) branch(x,y,ang+(rnd()<.5?-1:1)*(0.5+rnd()*0.6),len*0.55,w*0.62,depth+1);
+    }
+    paths.push({d,w,depth});
+  }
+  [[215,3.6],[290,4.4],[380,3.2]].forEach(([x,w],k)=>branch(x+rnd()*14,770,-Math.PI/2+(rnd()-.5)*0.28,640+rnd()*120,w,0));
+  // finger silhouette
+  const g=document.createElementNS(NS,'g');
+  const sil=document.createElementNS(NS,'path');
+  sil.setAttribute('d','M150 760 L150 230 C150 90 450 90 450 230 L450 760');
+  sil.setAttribute('fill','none');sil.setAttribute('stroke','#000');sil.setAttribute('stroke-opacity','.12');sil.setAttribute('stroke-width','1.2');sil.setAttribute('stroke-dasharray','5 6');
+  svg.appendChild(sil);
+  const defs=document.createElementNS(NS,'defs');
+  defs.innerHTML='<clipPath id="fc"><path d="M150 760 L150 230 C150 90 450 90 450 230 L450 760Z"/></clipPath><radialGradient id="glow" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>';
+  svg.prepend(defs);
+  const glow=document.createElementNS(NS,'rect');glow.setAttribute('x',0);glow.setAttribute('y',0);glow.setAttribute('width',600);glow.setAttribute('height',720);glow.setAttribute('fill','url(#glow)');svg.insertBefore(glow,sil);
+  g.setAttribute('clip-path','url(#fc)');
+  paths.sort((a,b)=>a.depth-b.depth).forEach((p,i)=>{
+    const el=document.createElementNS(NS,'path');
+    el.setAttribute('d',p.d);el.setAttribute('fill','none');el.setAttribute('stroke','#1a1a1a');
+    el.setAttribute('stroke-width',Math.max(p.w,1));el.setAttribute('stroke-linecap','round');
+    el.setAttribute('stroke-opacity',(0.22+0.5*(1-p.depth/3)).toFixed(2));
+    g.appendChild(el);
+    const L=el.getTotalLength?2000:0; el.style.strokeDasharray=L;el.style.strokeDashoffset=L;
+    el.style.transition=`stroke-dashoffset ${2.2+p.depth*0.5}s cubic-bezier(.4,0,.2,1) ${Math.min(0.04*i,1.6)}s`;
+  });
+  svg.appendChild(g);
+  // scan line
+  const scan=document.createElementNS(NS,'rect');scan.setAttribute('x',150);scan.setAttribute('width',300);scan.setAttribute('height',2);scan.setAttribute('fill','#000');scan.setAttribute('opacity','.35');
+  const an=document.createElementNS(NS,'animate');an.setAttribute('attributeName','y');an.setAttribute('values','160;740;160');an.setAttribute('dur','7s');an.setAttribute('repeatCount','indefinite');scan.appendChild(an);
+  svg.appendChild(scan);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>g.querySelectorAll('path').forEach(p=>p.style.strokeDashoffset=0)));
+})();
+
+/* ---------- small thumbnail art ---------- */
+document.querySelectorAll('svg[data-art]').forEach((svg,idx)=>{
+  const [,, W, H]=svg.getAttribute('viewBox').split(' ').map(Number);
+  const dk=svg.parentElement.classList.contains('dk'); const c=dk?'#fff':'#000';
+  let out=''; const t=svg.dataset.art;
+  if(t==='waves'){for(let k=0;k<14;k++){let d=`M0 ${40+k*10}`;for(let x=0;x<=W;x+=20){d+=` L${x} ${(40+k*10+Math.sin(x/(40+k*3)+k+idx)*14).toFixed(1)}`}out+=`<path d="${d}" fill="none" stroke="${c}" stroke-opacity="${0.08+k*0.02}" stroke-width="1"/>`}}
+  if(t==='grid'){for(let x=20;x<W;x+=22)for(let y=20;y<H;y+=22){const r=1+((x*7+y*3+idx*11)%9)/3;out+=`<circle cx="${x}" cy="${y}" r="${r.toFixed(1)}" fill="${c}" fill-opacity="${(0.06+r/14).toFixed(2)}"/>`}}
+  if(t==='freq'){for(let x=10;x<W;x+=9){const h=10+Math.abs(Math.sin(x/23+idx)*Math.cos(x/57))*120;out+=`<rect x="${x}" y="${H-h-20}" width="4" height="${h.toFixed(1)}" rx="2" fill="${c}" fill-opacity=".22"/>`}}
+  if(t==='rings'){for(let r=10;r<260;r+=12){out+=`<ellipse cx="${W*0.7}" cy="${H*0.6}" rx="${r}" ry="${r*0.78}" fill="none" stroke="${c}" stroke-opacity="${(0.28-r/1100).toFixed(2)}" stroke-width="1"/>`}}
+  if(t==='nodes'){const pts=[];let s=idx*97+13;const R=()=>{s=(s*16807)%2147483647;return s/2147483647};for(let i=0;i<18;i++)pts.push([R()*W,R()*H]);pts.forEach((p,i)=>pts.forEach((q,j)=>{if(j>i&&Math.hypot(p[0]-q[0],p[1]-q[1])<110)out+=`<line x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}" stroke="${c}" stroke-opacity=".18"/>`}));pts.forEach(p=>out+=`<circle cx="${p[0]}" cy="${p[1]}" r="3" fill="${c}" fill-opacity=".5"/>`)}
+  svg.innerHTML=out;
+});
+
+/* ---------- reveal + nav ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const links=[...document.querySelectorAll('.navlinks a')];
+const so=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+en.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>so.observe(s));
+links.forEach(a=>a.addEventListener('click',()=>document.querySelector('.navlinks').classList.remove('open')));
+</script>
+</body>
+</html>
